@@ -1,35 +1,51 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --main-accent: 199 89% 48%; /* Neon Cyan */
-  --secondary-accent: 217 91% 60%; /* Deep Blue */
-  --border: 217 32% 17%;
+@theme {
+  --color-background: hsl(222 47% 7%);
+  --color-foreground: hsl(210 40% 98%);
+  --color-card: hsl(222 47% 10%);
+  --color-card-foreground: hsl(210 40% 98%);
+
+  --color-primary: hsl(199 89% 48%);
+  --color-primary-foreground: hsl(222 47% 7%);
+
+  --color-secondary: hsl(217 32% 17%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+
+  --color-muted: hsl(217 32% 17%);
+  --color-muted-foreground: hsl(215 20.2% 65.1%);
+
+  --color-accent: hsl(217 32% 17%);
+  --color-accent-foreground: hsl(210 40% 98%);
+
+  --color-border: hsl(217 32% 17%);
+  --color-input: hsl(217 32% 17%);
+  --color-ring: hsl(224 71.4% 4.1%);
 }
 
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: 'Inter', sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  @apply bg-card/60 backdrop-blur-md border border-white/5 shadow-xl;
 }
 
-.neon-glow {
-  text-shadow: 0 0 10px hsl(var(--main-accent)), 0 0 20px hsl(var(--main-accent));
+.sidebar-item-active {
+  @apply bg-primary/10 text-primary border-r-2 border-primary;
 }
 
-.neon-border {
-  border: 1px solid hsl(var(--main-accent));
-  box-shadow: 0 0 10px hsla(var(--main-accent), 0.3);
+.input-field {
+  @apply w-full bg-secondary/50 border border-white/5 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground font-bold py-3 px-6 rounded-xl hover:opacity-90 transition-all shadow-[0_0_20px_rgba(6, 182, 212, 0.3)];
 }
