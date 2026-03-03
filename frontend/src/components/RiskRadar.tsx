@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 
 interface RiskRadarProps {
-    ratios: Record<string, float>;
+    ratios: Record<string, number>;
 }
 
 const RiskRadar: React.FC<RiskRadarProps> = ({ ratios }) => {

@@ -21,7 +21,7 @@ class CMARatioEngine:
         ratios = {}
         
         # Liquidity Ratios
-        ratios['current_ratio'] = data.current_assets / data.current_assets if data.current_assets > 0 else 0
+        ratios['current_ratio'] = data.current_assets / data.current_liabilities if data.current_liabilities > 0 else 0
         ratios['quick_ratio'] = (data.current_assets - data.inventory) / data.current_liabilities if data.current_liabilities > 0 else 0
         
         # Solvency Ratios
